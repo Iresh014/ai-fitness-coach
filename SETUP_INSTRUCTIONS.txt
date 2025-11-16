@@ -1,0 +1,39 @@
+🏋️ AI FITNESS COACH - SETUP INSTRUCTIONS
+==========================================
+
+✅ Project structure created!
+
+📋 NEXT STEPS:
+
+1. Copy Backend Code:
+   - Open Claude chat
+   - Find artifact: "FastAPI Backend - main.py"
+   - Copy ALL the code
+   - Paste into: backend/main.py
+
+2. Copy Frontend Code:
+   - Find artifact: "AI Fitness Coach - Complete Application"
+   - Copy ALL the code
+   - Paste into: frontend/src/App.jsx
+
+3. Run the Application:
+   cd ai-fitness-coach
+   docker-compose up --build
+
+4. Access:
+   Frontend: http://localhost:5173
+   Backend: http://localhost:8000/docs
+
+🎓 Demo Credentials:
+   Username: demo
+   Password: demo123
+
+💡 The app works with demo data by default.
+   API keys are optional for extended features.
+
+📚 Need Help?
+   - Check README.md for more info
+   - All services run in Docker
+   - Data persists in MongoDB
+
+🎉 Enjoy your AI Fitness Coach!

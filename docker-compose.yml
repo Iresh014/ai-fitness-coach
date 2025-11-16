@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: fitness-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=fitness_coach
+    networks:
+      - fitness-network
+
+  backend:
+    build: ./backend
+    container_name: fitness-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017
+      - SECRET_KEY=your-secret-key-change-in-production
+    depends_on:
+      - mongodb
+    networks:
+      - fitness-network
+    volumes:
+      - ./backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    container_name: fitness-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - fitness-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  mongodb_data:
+
+networks:
+  fitness-network:
+    driver: bridge
