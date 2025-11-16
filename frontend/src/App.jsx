@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Dumbbell, Apple, Brain, TrendingUp, User, LogOut, Menu, X, Search, Filter, Play, ChevronRight, Award, Target, Calendar } from 'lucide-react';
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:8000';
+// top of file (App.jsx)
+export const API_BASE_URL = import.meta.env.VITE_API_URL;
+
+
 const EXERCISEDB_API_KEY = 'YOUR_RAPIDAPI_KEY'; // Get from RapidAPI
 const USDA_API_KEY = 'YOUR_USDA_API_KEY'; // Get from FoodData Central
 
